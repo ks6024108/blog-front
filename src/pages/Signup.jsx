@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import signupValidator from "../validators/signupValidator";
 import axios from "../utils/axiosInstance";
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
   const initialFormData = {
     name: "",
@@ -19,6 +21,8 @@ const Signup = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [formError, setFormError] = useState(initialFormError);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -50,13 +54,29 @@ const Signup = () => {
         };
         //api request
         const response = await axios.post("/auth/signup", requestBody);
-        console.log(response);
+        const data = response.data;
+        // console.log("suc:", response.data.message);
+        toast.success(data.message, {
+          position: "top-right",
+          autoClose: true,
+        });
+        // console.log(response);
         setFormData(initialFormData);
         setFormError(initialFormError);
         setLoading(false);
+        navigate("/login");
       } catch (error) {
         setLoading(false);
-        console.log(error.message);
+        const response = error.response;
+        console.log(response);
+        const data = response.data;
+        console.log(data);
+        // console.log("error;;;", error.response.data.message);
+        toast.error(data.message, {
+          position: "top-right",
+          autoClose: true,
+        });
+        // console.log(error.message);
       }
     }
     console.log(formData);

@@ -1,3 +1,6 @@
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import PrivateLayout from "./components/layout/PrivateLayout";
@@ -11,19 +14,22 @@ import Login from "./pages/Login";
 
 function App() {
   return (
-    <Routes>
-      <Route element={<PrivateLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="categories" element={<CategoryList />} />
-        <Route path="posts" element={<PostList />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="setting" element={<Setting />} />
-      </Route>
-      <Route element={<PublicLayout />}>
-        <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login />} />
-      </Route>
-    </Routes>
+    <React.Fragment>
+      <Routes>
+        <Route element={<PrivateLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="categories" element={<CategoryList />} />
+          <Route path="posts" element={<PostList />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="setting" element={<Setting />} />
+        </Route>
+        <Route element={<PublicLayout />}>
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </React.Fragment>
   );
 }
 
