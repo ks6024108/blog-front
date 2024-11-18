@@ -1,0 +1,116 @@
+/* .navContain {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgb(162, 192, 237);
+}
+
+.navLinks {
+  text-decoration: none;
+  margin: 16px;
+  font-size: 18px;
+  color: rgb(82, 143, 234);
+}
+
+.navLinks:hover {
+  text-decoration: underline;
+  color: rgb(54, 128, 239);
+}
+
+@media screen and (max-width: 768px) {
+  .navContain {
+    flex-direction: column;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navContain {
+    flex-direction: column;
+    width: 70%;
+  }
+  .navLinks {
+    margin: 12px;
+    font-size: 16px;
+  }
+} 
+ */
+
+/* new code starts here */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  background-color: #999;
+  color: #fff;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navLinkContainer {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+}
+.navLink:hover {
+  color: #2d87c7;
+}
+
+.menuToggle {
+  display: none;
+  cursor: pointer;
+}
+
+.pubNavLink {
+  text-decoration: none;
+  padding-right: 0.8rem;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .navLinkContainer {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #888;
+    width: 50%;
+    padding: 1rem 0;
+    transform: translateX(100%);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navLinkContainer.open {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+  }
+  .menuToggle {
+    display: block;
+  }
+
+  .pubNavLink {
+    padding-right: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pubNavLink {
+    padding-left: 0.5rem;
+  }
+}

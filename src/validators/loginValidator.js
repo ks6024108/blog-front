@@ -18,7 +18,7 @@ const LoginValidator = ({ email, password }) => {
 
   if (!password) {
     errors.password = "Password is Required";
-  } 
+  }
 
   return errors;
 };

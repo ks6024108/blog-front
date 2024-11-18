@@ -54,9 +54,16 @@ const Login = () => {
       } catch (error) {
         setLoading(false);
         const response = error.response;
-        console.log(response);
+        // console.log("resp::", response);
         const data = response.data;
-        console.log(data);
+        // console.log(data);
+
+        if (data.password) {
+          toast.error(data.password, {
+            position: "top-right",
+            autoClose: true,
+          });
+        }
         // console.log("error;;;", error.response.data.message);
         toast.error(data.message, {
           position: "top-right",
@@ -65,8 +72,8 @@ const Login = () => {
         // console.log(error.message);
       }
     }
-    console.log(formData);
-    console.log(formError);
+    // console.log(formData);
+    // console.log(formError);
   };
 
   return (
@@ -94,6 +101,7 @@ const Login = () => {
           value={formData.password}
           onChange={handleChange}
           autoComplete="password"
+          placeholder="Enter Your Password Correctly .."
           required
         />
         {formError.password && <p className="error">{formError.password}</p>}

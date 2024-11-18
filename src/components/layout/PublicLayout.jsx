@@ -3,11 +3,11 @@ import PublicNavbar from "../PublicNavbar";
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 const PublicLayout = () => {
-  const auth = useAuth();
+  // const auth = useAuth();
 
-  if (auth) {
-    return <Navigate to={"/"} />;
-  }
+  // if (auth) {
+  //   return <Navigate to={"/"} />;
+  // }
 
   return (
     <React.Fragment>

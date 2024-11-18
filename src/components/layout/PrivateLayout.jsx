@@ -3,11 +3,11 @@ import PrivateNavbar from "../PrivateNavbar";
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 const PrivateLayout = () => {
-  const auth = useAuth();
+  // const auth = useAuth();
 
-  if (!auth) {
-    return <Navigate to={"/login"} />;
-  }
+  // if (!auth) {
+  //   return <Navigate to={"/login"} />;
+  // }
 
   return (
     <React.Fragment>
