@@ -1,0 +1,112 @@
+.categoryListContainer {
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.pageSizeSelect {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.responsiveTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.responsiveTable th,
+.responsiveTable td {
+  text-align: left;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+}
+
+.responsiveTable th {
+  background-color: #f4f4f4;
+}
+
+.pageContainer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pageButton {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.pageButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .searchInput,
+  .pageSizeSelect {
+    font-size: 0.9rem;
+  }
+
+  .responsiveTable th,
+  .responsiveTable td {
+    font-size: 0.9rem;
+  }
+
+  .pageButton {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchInput {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .responsiveTable th,
+  .responsiveTable td {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .button,
+  .pageButton {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+}

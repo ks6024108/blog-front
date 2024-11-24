@@ -2,10 +2,34 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
 }
 
-body,html{
+body,
+html {
   width: 100%;
   height: 100%;
+}
+
+/* new extra css */
+@media only screen and (max-width: 530px) {
+  table {
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 6px;
+  }
+  .notDisplay {
+    display: none;
+  }
+
+  td button {
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+  button {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
 }
