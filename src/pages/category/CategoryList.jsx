@@ -38,11 +38,7 @@ const CategoryList = () => {
       } catch (error) {
         setLoading(false);
         const response = error.response;
-        // console.log("resp::", response);
         const data = response.data;
-        // console.log(data);
-
-        // console.log("error;;;", error.response.data.message);
         toast.error(data.message, {
           position: "top-right",
           autoClose: true,
@@ -78,7 +74,6 @@ const CategoryList = () => {
 
   const handleChange = (e) => {
     setPageSize(e.target.value);
-    // console.log(e.target.value);
   };
 
   const handleSearch = async (e) => {
@@ -94,11 +89,7 @@ const CategoryList = () => {
       setTotalPage(data.pages);
     } catch (error) {
       const response = error.response;
-      // console.log("resp::", response);
       const data = response.data;
-      // console.log(data);
-
-      // console.log("error;;;", error.response.data.message);
       toast.error(data.message, {
         position: "top-right",
         autoClose: true,

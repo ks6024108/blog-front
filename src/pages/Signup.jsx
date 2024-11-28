@@ -28,6 +28,11 @@ const Signup = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleRoleChange = (e) => {
+    const role = e.target.value;
+    setFormData({ ...formData, role }); // Update with selected category ID
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = signupValidator({
@@ -43,6 +48,7 @@ const Signup = () => {
       errors.confirmPassword
     ) {
       setFormError(errors);
+      console.log("ffff1:", formData);
     } else {
       try {
         setLoading(true);
@@ -51,6 +57,7 @@ const Signup = () => {
           name: formData.name,
           email: formData.email,
           password: formData.password,
+          role: formData.role,
         };
         //api request
         const response = await axios.post("/auth/signup", requestBody);
@@ -82,6 +89,8 @@ const Signup = () => {
     console.log(formData);
     console.log(formError);
   };
+  console.log("ffff:", formData);
+
   return (
     <div className="container">
       <form className="forms" onSubmit={handleSubmit}>
@@ -134,6 +143,14 @@ const Signup = () => {
         {formError.confirmPassword && (
           <p className="error">{formError.confirmPassword}</p>
         )}
+
+        <div style={{ margin: "7px" }}>
+          <h5>Are you an Author?</h5>
+          <select onChange={handleRoleChange} value={formData.code}>
+            <option value={3}>No</option>
+            <option value={2}>Yes</option>
+          </select>
+        </div>
 
         <button type="submit" value="SignUp">
           {loading ? "Saving..." : "SignUp"}

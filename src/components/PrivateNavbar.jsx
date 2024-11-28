@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const PrivateNavbar = () => {
@@ -18,6 +18,15 @@ const PrivateNavbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  const [role, setRole] = useState(null);
+  useEffect(() => {
+    const stringfyBlogData = window.localStorage.getItem("blogData");
+    const blogData = JSON.parse(stringfyBlogData);
+    setRole(blogData.user.role);
+    console.log(blogData.user.role);
+  }, []);
+  // console.log("rop:", role);
   return (
     // <nav className="navContain">
     //   <NavLink to={"/"} className="navLinks">
@@ -44,15 +53,17 @@ const PrivateNavbar = () => {
     <nav className="navbar">
       <div className="logo">Bloggy</div>
       <div className={`navLinkContainer ${isMenuOpen ? "open" : ""}`}>
-        <NavLink
-          to={"/categories"}
-          className="navLink"
-          onClick={() => {
-            setIsMenuOpen(false);
-          }}
-        >
-          Categories
-        </NavLink>
+        {(role === 1 || role == 2) && (
+          <NavLink
+            to={"/categories"}
+            className="navLink"
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            Categories
+          </NavLink>
+        )}
         <NavLink
           to={"/posts"}
           className="navLink"
