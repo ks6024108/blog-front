@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+     
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "rewrites": []
+}
+
+
