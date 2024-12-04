@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: `https://blog-website-izfp.onrender.com/api/v1`,
+  baseURL: `https://blog-website-backend-hlwl.onrender.com/api/v1`,
 });
 
 axiosInstance.interceptors.request.use((req) => {
