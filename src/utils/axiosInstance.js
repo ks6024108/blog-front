@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:5513/api/v1" });
+const axiosInstance = axios.create({
+  baseURL: `https://blog-website-izfp.onrender.com/api/v1`,
+});
 
 axiosInstance.interceptors.request.use((req) => {
   const stringfyBlogData = window.localStorage.getItem("blogData");

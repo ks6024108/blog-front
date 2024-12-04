@@ -162,6 +162,7 @@ const NewPost = () => {
             onChange={handleCategoryChange}
             value={formData.category}
           >
+            <option value="">Select a category</option>
             {categories.map((category) => (
               <option key={category._id} value={category._id}>
                 {category.title}

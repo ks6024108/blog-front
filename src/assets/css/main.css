@@ -8,6 +8,7 @@ body,
 html {
   width: 100%;
   height: 100%;
+  background-color: #999;
 }
 
 /* new extra css */
@@ -31,5 +32,275 @@ html {
   button {
     padding: 5px 10px;
     font-size: 0.75rem;
+  }
+}
+
+/* code for style card */
+/* Container Styling */
+.postContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Individual Post Card */
+.postCard {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.postCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* Title Styling */
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* Description Styling */
+.cardDescription {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* Image Styling */
+.cardImg {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .postContainer {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .postCard {
+    max-width: 100%;
+    padding: 0.8rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardDescription {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardTitle {
+    font-size: 0.9rem;
+  }
+
+  .cardDescription {
+    font-size: 0.8rem;
+  }
+  .hidesc {
+    display: none;
+  }
+}
+
+/* css for detail post */
+/* Button Styling */
+.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+}
+
+.deleteButton:hover {
+  background-color: #a71d2a;
+}
+
+/* Detail Container Styling */
+.detailContainer {
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+}
+
+.postTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.postCategory {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.postDescription {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.detailContainer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+/* Popup Styling */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popupBox {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.popupActions {
+  margin-top: 1.5rem;
+}
+
+.actionButton {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.actionButton.cancel {
+  background-color: #6c757d;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+.actionButton.cancel:hover {
+  background-color: #5a6268;
+}
+
+.actionButton.confirm {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.actionButton.confirm:hover {
+  background-color: #218838;
+}
+
+.loading {
+  font-size: 20px;
+  color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .postTitle {
+    font-size: 1.5rem;
+  }
+
+  .postCategory,
+  .postDescription {
+    font-size: 0.9rem;
+  }
+
+  .popupBox {
+    padding: 1.5rem;
+  }
+
+  .actionButton {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .postTitle {
+    font-size: 1.2rem;
+  }
+
+  .postCategory,
+  .postDescription {
+    font-size: 0.8rem;
+  }
+
+  .actionButton {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
   }
 }

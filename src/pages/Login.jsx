@@ -105,7 +105,9 @@ const Login = () => {
           required
         />
         {formError.password && <p className="error">{formError.password}</p>}
-        <Link className="forgotPassword" to="/forgotPassword">Forgot Password</Link>
+        <Link className="forgotPassword" to="/forgotPassword">
+          Forgot Password
+        </Link>
         <button type="submit" value="Login">
           {loading ? "Logging..." : "Login"}
         </button>

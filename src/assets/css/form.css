@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f7f8fc;
+  /* background-color: #f7f8fc; */
   padding: 20px;
 }
 
@@ -58,6 +58,14 @@
 .error {
   color: red;
   font-size: 12px;
+}
+
+.forgotPassword {
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  color: purple;
 }
 
 @media (max-width: 600px) {

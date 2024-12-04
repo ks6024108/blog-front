@@ -28,6 +28,7 @@ const DetailPost = () => {
       const getPost = async () => {
         try {
           //api
+          setLoading(true);
           const response = await axios.get(`/blog/${postId}`);
           console.log("resp::", response);
           const data = response.data.data;
@@ -41,6 +42,7 @@ const DetailPost = () => {
             category: data.blog.category.title,
             updatedBy: data.blog.updatedBy.name,
           });
+          setLoading(false);
         } catch (error) {
           const response = error.response;
           const data = response.data;
@@ -102,6 +104,7 @@ const DetailPost = () => {
       >
         Delete
       </button>
+      {loading && <p className="loading">Loading...</p>}
       <div className="detailContainer">
         <h2 className="postTitle">{formData.title}</h2>
         <h5 className="postCategory">Category:{formData.category}</h5>
@@ -113,12 +116,8 @@ const DetailPost = () => {
         </h5>
         <h5 className="postCategory">Updated By:{formData.updatedBy}</h5>
 
-        <p className="postDescription">{formData.description}</p>
-        <img
-          src={formData.banner}
-          alt="mern"
-          style={{ width: "100px", height: "100px" }}
-        />
+        <p className="postDescription truncatedDescription">{formData.description}</p>
+        <img src={formData.banner} alt="mern" />
       </div>
       {/* pop up and deleting here... */}
       <div className="popupContainer">

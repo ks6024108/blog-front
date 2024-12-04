@@ -93,7 +93,6 @@ const Home = () => {
 
   return (
     <div className="postPage">
-      <h2 className="postTitle">Post List</h2>
       <input
         className="searchInput"
         type="text"
@@ -112,8 +111,12 @@ const Home = () => {
         <option value={15}>15</option>
         <option value={20}>20</option>
       </select>
+      <center>
+        <h2 className="postTitle">Post List</h2>
+      </center>
+
       {loading ? (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       ) : (
         <div className="postContainer">
           {posts.map((post) => (
@@ -123,13 +126,10 @@ const Home = () => {
               onClick={() => navigate(`/posts/detailPost/${post._id}`)}
             >
               <h4 className="cardTitle">{post.title}</h4>
-              <p className="cardDescription">{post.description}</p>
-              <img
-                className="cardImg"
-                alt="mern"
-                src={post.banner}
-                style={{ width: "100px", height: "100px" }}
-              />
+              <p className="cardDescription">
+                {post.description.split(" ").slice(0, 10).join(" ") + "..."}
+              </p>
+              <img className="cardImg" alt="mern" src={post.banner} />
             </div>
           ))}
         </div>
