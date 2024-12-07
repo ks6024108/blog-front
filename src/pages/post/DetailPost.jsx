@@ -30,20 +30,21 @@ const DetailPost = () => {
           //api
           setLoading(true);
           const response = await axios.get(`/blog/${postId}`);
-          console.log("resp::", response);
+          console.log("resp:: detail", response);
           const data = response.data.data;
-          console.log("data:", data);
+          console.log("data: detail", data);
           setFormData({
             title: data.blog.title,
             description: data.blog.description,
             banner: data.blog.banner,
             createdAt: data.blog.createdAt,
             updatedAt: data.blog.updatedAt,
-            category: data.blog.category.title,
-            updatedBy: data.blog.updatedBy.name,
+            category: data.blog?.category?.title || "NO Category",
+            updatedBy: data.blog?.updatedBy?.name || "None",
           });
           setLoading(false);
         } catch (error) {
+          setLoading(false);
           const response = error.response;
           const data = response.data;
 
@@ -85,6 +86,7 @@ const DetailPost = () => {
       });
     }
   };
+  // console.log("for:", formData);
   return (
     <div>
       <button className="button" onClick={() => navigate(-1)}>
@@ -104,21 +106,29 @@ const DetailPost = () => {
       >
         Delete
       </button>
-      {loading && <p className="loading">Loading...</p>}
-      <div className="detailContainer">
-        <h2 className="postTitle">{formData.title}</h2>
-        <h5 className="postCategory">Category:{formData.category}</h5>
-        <h5 className="postCategory">
-          Created At:{moment(formData.createdAt).format("YYYY-MM-DD HH:mm:ss")}
-        </h5>
-        <h5 className="postCategory">
-          Updated At:{moment(formData.updatedAt).format("YYYY-MM-DD HH:mm:ss")}
-        </h5>
-        <h5 className="postCategory">Updated By:{formData.updatedBy}</h5>
+      {loading ? (
+        <p className="loading">Loading...</p>
+      ) : (
+        <div className="detailContainer">
+          <h2 className="postTitle">{formData.title}</h2>
+          <h5 className="postCategory">Category:{formData.category}</h5>
+          <h5 className="postCategory">
+            Created At:
+            {moment(formData.createdAt).format("YYYY-MM-DD HH:mm:ss")}
+          </h5>
+          <h5 className="postCategory">
+            Updated At:
+            {moment(formData.updatedAt).format("YYYY-MM-DD HH:mm:ss")}
+          </h5>
+          <h5 className="postCategory">Updated By:{formData.updatedBy}</h5>
 
-        <p className="postDescription truncatedDescription">{formData.description}</p>
-        <img src={formData.banner} alt="mern" />
-      </div>
+          <p className="postDescription truncatedDescription">
+            {formData.description}
+          </p>
+          <img src={formData.banner} alt="mern" />
+        </div>
+      )}
+
       {/* pop up and deleting here... */}
       <div className="popupContainer">
         {isPopupVisible && (
