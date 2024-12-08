@@ -19,9 +19,20 @@ const DetailPost = () => {
     updatedBy: "",
   };
 
+  const [role, setRole] = useState(null);
+
   const [formData, setFormData] = useState(initialFormData);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const stringfyBlogData = window.localStorage.getItem("blogData");
+    const blogData = JSON.parse(stringfyBlogData);
+    if (blogData?.user?.role) {
+      setRole(blogData.user.role);
+      console.log(blogData.user.role);
+    }
+  }, []);
 
   useEffect(() => {
     if (postId) {
@@ -92,20 +103,24 @@ const DetailPost = () => {
       <button className="button" onClick={() => navigate(-1)}>
         Go Back
       </button>
-      <button
-        className="button"
-        onClick={() => navigate(`/posts/updatePost/${postId}`)}
-      >
-        Update Post
-      </button>
-      <button
-        className="button deleteButton"
-        onClick={() => {
-          setPopupVisible(true);
-        }}
-      >
-        Delete
-      </button>
+      {(role === 1 || role === 2) && (
+        <div>
+          <button
+            className="button"
+            onClick={() => navigate(`/posts/updatePost/${postId}`)}
+          >
+            Update Post
+          </button>
+          <button
+            className="button deleteButton"
+            onClick={() => {
+              setPopupVisible(true);
+            }}
+          >
+            Delete
+          </button>
+        </div>
+      )}
       {loading ? (
         <p className="loading">Loading...</p>
       ) : (

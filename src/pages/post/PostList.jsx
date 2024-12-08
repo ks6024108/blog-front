@@ -175,9 +175,20 @@
 
 //new code is:-
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import usePostList from "../../assets/extra/usePostList";
 
 const PostList = () => {
+  const [role, setRole] = useState(null);
+
+  useEffect(() => {
+    const stringfyBlogData = window.localStorage.getItem("blogData");
+    const blogData = JSON.parse(stringfyBlogData);
+    if (blogData?.user?.role) {
+      setRole(blogData.user.role);
+      console.log(blogData.user.role);
+    }
+  }, []);
   const navigate = useNavigate();
   const {
     posts,
@@ -194,9 +205,11 @@ const PostList = () => {
 
   return (
     <div className="postPage">
-      <button className="button" onClick={() => navigate("newPost")}>
-        Add New Post
-      </button>
+      {(role === 1 || role === 2) && (
+        <button className="button" onClick={() => navigate("newPost")}>
+          Add New Post
+        </button>
+      )}
       <input
         className="searchInput"
         type="text"
@@ -231,8 +244,7 @@ const PostList = () => {
             >
               <h4 className="cardTitle">{post.title}</h4>
               <p className="cardDescription">
-                {post.description.split(" ").slice(0, 10).join(" ") +
-                  "..."}
+                {post.description.split(" ").slice(0, 10).join(" ") + "..."}
               </p>
               <img className="cardImg" alt="mern" src={post.banner} />
             </div>

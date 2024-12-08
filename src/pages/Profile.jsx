@@ -63,25 +63,29 @@ const Profile = () => {
   useEffect(() => {
     const stringfyBlogData = window.localStorage.getItem("blogData");
     const blogData = JSON.parse(stringfyBlogData);
-    setRole(blogData.user.role);
-    console.log(blogData.user.role);
+    if (blogData?.user?.role) {
+      setRole(blogData.user.role);
+      console.log(blogData.user.role);
+    }
   }, []);
 
+  console.log("rj", role);
   useEffect(() => {
     const getUser = async () => {
       try {
         //api
         const response = await axios.get(`/auth/current-user`);
-        console.log("re:", response);
+        // console.log("re:", response);
 
         const data = response.data.data;
-        setUserId(data.user._id);
+        setUserId(data.user?._id);
         console.log("d:", data);
         setFormData({ name: data.user.name, email: data.user.email });
         setOldEmail(data.user.email);
+        console.log("re", response);
       } catch (error) {
         const response = error.response;
-        const data = response.data;
+        const data = response?.data;
 
         toast.error(data.message, {
           position: "top-right",
@@ -95,7 +99,7 @@ const Profile = () => {
   // useEffect(() => {
   //   const getCategories = async () => {
   //     try {
-  //       setLoading(true);
+  //       setLoading2(true);
 
   //       //api
   //       const response = await axios.get(
@@ -133,20 +137,22 @@ const Profile = () => {
 
   useEffect(() => {
     // Filter categories by userId
-    if (role == 2 || role == 3) {
-      const filteredCat = categories.filter(
+    if (role === 2 || role === 1) {
+      const filteredCat = categories?.filter(
         (category) => category.updatedBy === userId
       );
 
       setFilteredCategories(filteredCat);
+      console.log("car", categories);
     }
   }, [categories, userId, role]);
 
   useEffect(() => {
     // Filter posts by userId
-    if (role == 2 || role == 3) {
-      const filteredPosts = posts.filter(
-        (post) => post.updatedBy._id === userId
+    if (role === 2 || role === 1) {
+      console.log("po", posts);
+      const filteredPosts = posts?.filter(
+        (post) => post.updatedBy?._id === userId
       );
       setFilteredPosts(filteredPosts);
     }
@@ -308,7 +314,7 @@ const Profile = () => {
               autoComplete="email"
               placeholder="johndoe2003@gmail.com"
             />
-            {formError.email && <p className="error">{formError.name}</p>}
+            {formError.email && <p className="error">{formError.email}</p>}
 
             <button type="submit" value="Change">
               {loading ? "changing.." : "Change"}
